@@ -1,0 +1,9 @@
+{
+	"name": "MuideenADF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fbf57aa3-d0cc-4ad3-92f8-64cb259542cd",
+		"tenantId": "8291ea07-ed46-498c-8427-7e98041e8691"
+	}
+}
