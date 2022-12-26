@@ -2,7 +2,7 @@
 	"name": "MuideenADF",
 	"properties": {
 		"globalParameters": {
-			"Environment": {
+			"Env": {
 				"type": "string",
 				"value": "pre-dev"
 			}
