@@ -5,13 +5,17 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"source": {
+				"type": "string",
+				"defaultValue": "source/A Adeyemi.pdf"
+			}
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"fileName": "A Adeyemi.pdf",
-				"folderPath": "source"
+				"type": "AzureBlobStorageLocation"
 			}
 		}
 	}
