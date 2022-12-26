@@ -8,6 +8,9 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
+		"default_properties_Env_value": {
+			"value": "pre-dev"
+		},
 		"containerUri": {
 			"value": ""
 		},
