@@ -10,7 +10,7 @@
 		"annotations": [],
 		"type": "AzureKeyVault",
 		"typeProperties": {
-			"baseUrl": "[concat('https://keyvault-Muideen','pre-dev','.vault.azure.net/')]"
+			"baseUrl": "[concat('https://keyvault-Muideen', parameters('Environment'),'.vault.azure.net/')]"
 		}
 	}
 }
