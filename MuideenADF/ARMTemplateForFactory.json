@@ -9,11 +9,20 @@
 		},
 		"AzureBlobStorage1_connectionString": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'",
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=adfdemostoragemuideen;EndpointSuffix=core.windows.net;"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvault-Muideen-@{linkedService().Environment}.vault.azure.net/"
 		},
 		"default_properties_Env_value": {
 			"type": "string",
 			"defaultValue": "pre-dev"
+		},
+		"default_properties_fet_value": {
+			"type": "string",
+			"defaultValue": "fd"
 		}
 	},
 	"variables": {
@@ -164,7 +173,36 @@
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
-					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]",
+					"accountKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "AzureKeyVault1",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "BlobStorage1AccessKey"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVault1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"Environment": {
+						"type": "String",
+						"defaultValue": "predev"
+					}
+				},
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []
@@ -177,6 +215,10 @@
 				"Env": {
 					"type": "string",
 					"value": "[parameters('default_properties_Env_value')]"
+				},
+				"fet": {
+					"type": "string",
+					"value": "[parameters('default_properties_fet_value')]"
 				}
 			},
 			"dependsOn": []
