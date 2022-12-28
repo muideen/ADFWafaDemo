@@ -1,0 +1,20 @@
+{
+	"name": "Binary3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"StorageAccount": "adfdemostoragedeen",
+				"Storage_Env": "predev"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			}
+		}
+	}
+}
