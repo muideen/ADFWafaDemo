@@ -6,9 +6,9 @@
 				"type": "string",
 				"value": "pre-dev"
 			},
-			"fet": {
+			"Environment": {
 				"type": "string",
-				"value": "fd"
+				"value": "predev"
 			}
 		}
 	},
