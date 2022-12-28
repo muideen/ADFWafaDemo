@@ -1,5 +1,5 @@
 {
-	"name": "Source_ds",
+	"name": "Target_ds",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
@@ -7,11 +7,6 @@
 			"parameters": {
 				"StorageAccount": "adfdemostoragedeen",
 				"Storage_Env": "predev"
-			}
-		},
-		"parameters": {
-			"env": {
-				"type": "String"
 			}
 		},
 		"annotations": [],
