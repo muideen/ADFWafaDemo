@@ -3,7 +3,10 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"storageAccount": "adfdemostoragemuideen"
+			}
 		},
 		"parameters": {
 			"env": {
@@ -15,11 +18,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "source",
-				"container": {
-					"value": "@dataset().env",
-					"type": "Expression"
-				}
+				"container": "source"
 			}
 		}
 	}
