@@ -1,0 +1,16 @@
+{
+	"name": "AzureKeyVault1",
+	"properties": {
+		"parameters": {
+			"Environment": {
+				"type": "String",
+				"defaultValue": "pre-dev"
+			}
+		},
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "[concat('https://keyvault-Muideen', parameters('Environment'),'.vault.azure.net/')]"
+		}
+	}
+}
