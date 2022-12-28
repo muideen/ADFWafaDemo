@@ -6,16 +6,16 @@
 			"value": "MuideenADF"
 		},
 		"AzureBlobStorage1_connectionString": {
-			"value": "DefaultEndpointsProtocol=https;AccountName=adfdemostoragemuideen;EndpointSuffix=core.windows.net;"
+			"value": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().storageAccount};EndpointSuffix=core.windows.net;"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"value": "https://keyvault-Muideen-@{linkedService().Environment}.vault.azure.net/"
+			"value": "@{concat('https://keyvault-Muideen-',linkedService().Environment,'.vault.azure.net/')}"
 		},
 		"default_properties_Env_value": {
 			"value": "pre-dev"
 		},
-		"default_properties_fet_value": {
-			"value": "fd"
+		"default_properties_Environment_value": {
+			"value": "predev"
 		}
 	}
 }

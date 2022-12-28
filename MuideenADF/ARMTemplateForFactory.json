@@ -10,19 +10,19 @@
 		"AzureBlobStorage1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'",
-			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=adfdemostoragemuideen;EndpointSuffix=core.windows.net;"
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().storageAccount};EndpointSuffix=core.windows.net;"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
-			"defaultValue": "https://keyvault-Muideen-@{linkedService().Environment}.vault.azure.net/"
+			"defaultValue": "@{concat('https://keyvault-Muideen-',linkedService().Environment,'.vault.azure.net/')}"
 		},
 		"default_properties_Env_value": {
 			"type": "string",
 			"defaultValue": "pre-dev"
 		},
-		"default_properties_fet_value": {
+		"default_properties_Environment_value": {
 			"type": "string",
-			"defaultValue": "fd"
+			"defaultValue": "predev"
 		}
 	},
 	"variables": {
@@ -110,7 +110,10 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"storageAccount": "adfdemostoragemuideen"
+					}
 				},
 				"parameters": {
 					"env": {
@@ -122,11 +125,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"folderPath": "source",
-						"container": {
-							"value": "@dataset().env",
-							"type": "Expression"
-						}
+						"container": "source"
 					}
 				}
 			},
@@ -141,7 +140,10 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"storageAccount": "adfdemostoragemuideen"
+					}
 				},
 				"parameters": {
 					"env": {
@@ -153,11 +155,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"folderPath": "target",
-						"container": {
-							"value": "@dataset().env",
-							"type": "Expression"
-						}
+						"container": "target"
 					}
 				}
 			},
@@ -170,6 +168,12 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"parameters": {
+					"storageAccount": {
+						"type": "string",
+						"defaultValue": "adfdemostoragemuideen"
+					}
+				},
 				"annotations": [],
 				"type": "AzureBlobStorage",
 				"typeProperties": {
@@ -178,7 +182,10 @@
 						"type": "AzureKeyVaultSecret",
 						"store": {
 							"referenceName": "AzureKeyVault1",
-							"type": "LinkedServiceReference"
+							"type": "LinkedServiceReference",
+							"parameters": {
+								"Environment": "predev"
+							}
 						},
 						"secretName": "BlobStorage1AccessKey"
 					}
@@ -216,9 +223,9 @@
 					"type": "string",
 					"value": "[parameters('default_properties_Env_value')]"
 				},
-				"fet": {
+				"Environment": {
 					"type": "string",
-					"value": "[parameters('default_properties_fet_value')]"
+					"value": "[parameters('default_properties_Environment_value')]"
 				}
 			},
 			"dependsOn": []
