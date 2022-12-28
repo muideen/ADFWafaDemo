@@ -24,7 +24,7 @@
 						"Environment": "predev"
 					}
 				},
-				"secretName": "BlobStorage1AccessKey"
+				"secretName": "BlobStoragedeenAccessKey"
 			}
 		}
 	},
