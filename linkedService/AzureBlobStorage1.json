@@ -1,10 +1,20 @@
 {
 	"name": "AzureBlobStorage1",
 	"properties": {
+		"parameters": {
+			"StorageAccount": {
+				"type": "string",
+				"defaultValue": "adfdemostoragedeen"
+			},
+			"Storage_Env": {
+				"type": "string",
+				"defaultValue": "predev"
+			}
+		},
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"connectionString": "DefaultEndpointsProtocol=https;AccountName=adfdemostoragemuideen@{linkedService().Environment};EndpointSuffix=core.windows.net;",
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=@{concat(linkedService().StorageAccount,linkedService().Storage_Env)};EndpointSuffix=core.windows.net;",
 			"accountKey": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
