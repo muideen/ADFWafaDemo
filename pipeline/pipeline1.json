@@ -35,14 +35,8 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Binary1",
-						"type": "DatasetReference",
-						"parameters": {
-							"env": {
-								"value": "@pipeline().globalParameters.Env",
-								"type": "Expression"
-							}
-						}
+						"referenceName": "Binary3",
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
