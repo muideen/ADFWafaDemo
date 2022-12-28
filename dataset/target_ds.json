@@ -1,16 +1,12 @@
 {
-	"name": "Binary2",
+	"name": "target_ds",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"storageAccount": "adfdemostoragemuideen"
-			}
-		},
-		"parameters": {
-			"env": {
-				"type": "String"
+				"StorageAccount": "adfdemostoragedeen",
+				"Storage_Env": "predev"
 			}
 		},
 		"annotations": [],
