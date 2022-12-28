@@ -10,7 +10,7 @@
 		"AzureBlobStorage1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'",
-			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().storageAccount};EndpointSuffix=core.windows.net;"
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{concat(linkedService().StorageAccount,linkedService().Storage_Env)};EndpointSuffix=core.windows.net;"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",

@@ -10,7 +10,7 @@
 		"AzureBlobStorage1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'",
-			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{linkedService().storageAccount};EndpointSuffix=core.windows.net;"
+			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{concat(linkedService().StorageAccount,linkedService().Storage_Env)};EndpointSuffix=core.windows.net;"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -36,7 +36,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data1",
+						"name": "Copy Data",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -68,26 +68,16 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "Binary1",
+								"referenceName": "source_ds",
 								"type": "DatasetReference",
-								"parameters": {
-									"env": {
-										"value": "@pipeline().globalParameters.Env",
-										"type": "Expression"
-									}
-								}
+								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "Binary2",
+								"referenceName": "target_ds",
 								"type": "DatasetReference",
-								"parameters": {
-									"env": {
-										"value": "@pipeline().globalParameters.Env",
-										"type": "Expression"
-									}
-								}
+								"parameters": {}
 							}
 						]
 					}
@@ -99,12 +89,12 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Binary1')]",
-				"[concat(variables('factoryId'), '/datasets/Binary2')]"
+				"[concat(variables('factoryId'), '/datasets/source_ds')]",
+				"[concat(variables('factoryId'), '/datasets/target_ds')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Binary1')]",
+			"name": "[concat(parameters('factoryName'), '/source_ds')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -112,12 +102,8 @@
 					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference",
 					"parameters": {
-						"storageAccount": "adfdemostoragemuideen"
-					}
-				},
-				"parameters": {
-					"env": {
-						"type": "string"
+						"StorageAccount": "adfdemostoragedeen",
+						"Storage_Env": "predev"
 					}
 				},
 				"annotations": [],
@@ -134,7 +120,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Binary2')]",
+			"name": "[concat(parameters('factoryName'), '/target_ds')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -142,12 +128,8 @@
 					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference",
 					"parameters": {
-						"storageAccount": "adfdemostoragemuideen"
-					}
-				},
-				"parameters": {
-					"env": {
-						"type": "String"
+						"StorageAccount": "adfdemostoragedeen",
+						"Storage_Env": "predev"
 					}
 				},
 				"annotations": [],
@@ -169,9 +151,13 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"parameters": {
-					"storageAccount": {
+					"StorageAccount": {
 						"type": "string",
-						"defaultValue": "adfdemostoragemuideen"
+						"defaultValue": "adfdemostoragedeen"
+					},
+					"Storage_Env": {
+						"type": "string",
+						"defaultValue": "predev"
 					}
 				},
 				"annotations": [],
@@ -187,7 +173,7 @@
 								"Environment": "predev"
 							}
 						},
-						"secretName": "BlobStorage1AccessKey"
+						"secretName": "BlobStoragedeenAccessKey"
 					}
 				}
 			},
