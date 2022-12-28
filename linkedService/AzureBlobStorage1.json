@@ -1,12 +1,6 @@
 {
 	"name": "AzureBlobStorage1",
 	"properties": {
-		"parameters": {
-			"storageAccount": {
-				"type": "string",
-				"defaultValue": "adfdemostoragemuideen"
-			}
-		},
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
