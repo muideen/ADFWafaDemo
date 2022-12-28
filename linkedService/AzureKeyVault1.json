@@ -4,13 +4,13 @@
 		"parameters": {
 			"Environment": {
 				"type": "String",
-				"defaultValue": "pre-dev"
+				"defaultValue": "predev"
 			}
 		},
 		"annotations": [],
 		"type": "AzureKeyVault",
 		"typeProperties": {
-			"baseUrl": "[concat('https://keyvault-Muideen', parameters('Environment'),'.vault.azure.net/')]"
+			"baseUrl": "https://keyvault-Muideen-@{linkedService().Environment}.vault.azure.net/"
 		}
 	}
 }
