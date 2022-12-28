@@ -4,7 +4,12 @@
 		"annotations": [],
 		"type": "AzureKeyVault",
 		"typeProperties": {
-			"baseUrl": "[concat('https://keyvault-Muideen', '-predev','.vault.azure.net/')]"
+			"baseUrl": "[concat('https://keyvault-Muideen', parameters('Environment'),'.vault.azure.net/')]"
+		},
+		"parameters": {
+			"Environment": {
+				"type": "String"
+			}
 		}
 	}
 }
