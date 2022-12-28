@@ -5,6 +5,10 @@
 			"Env": {
 				"type": "string",
 				"value": "pre-dev"
+			},
+			"fet": {
+				"type": "string",
+				"value": "fd"
 			}
 		}
 	},
