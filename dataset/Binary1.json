@@ -5,7 +5,8 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"storageAccount": "adfdemostoragemuideen"
+				"StorageAccount": "adfdemostoragedeen",
+				"Storage_Env": "predev"
 			}
 		},
 		"parameters": {
