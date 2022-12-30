@@ -2,12 +2,8 @@
 	"name": "source_ds",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage1",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"StorageAccount": "adfdemostoragedeen",
-				"Storage_Env": "predev"
-			}
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "Binary",
