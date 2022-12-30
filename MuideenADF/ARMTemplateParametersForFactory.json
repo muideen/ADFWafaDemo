@@ -8,6 +8,9 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": "DefaultEndpointsProtocol=https;AccountName=@{concat(linkedService().StorageAccount,linkedService().Storage_Env)};EndpointSuffix=core.windows.net;"
 		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "@{concat('https://keyvault-Muideen-',linkedService().Environment,'.vault.azure.net/')}"
 		},

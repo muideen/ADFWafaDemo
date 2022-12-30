@@ -12,6 +12,10 @@
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'",
 			"defaultValue": "DefaultEndpointsProtocol=https;AccountName=@{concat(linkedService().StorageAccount,linkedService().Storage_Env)};EndpointSuffix=core.windows.net;"
 		},
+		"AzureBlobStorage2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "@{concat('https://keyvault-Muideen-',linkedService().Environment,'.vault.azure.net/')}"
@@ -99,12 +103,8 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"StorageAccount": "adfdemostoragedeen",
-						"Storage_Env": "predev"
-					}
+					"referenceName": "AzureBlobStorage2",
+					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -116,7 +116,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage2')]"
 			]
 		},
 		{
@@ -125,12 +125,8 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"StorageAccount": "adfdemostoragedeen",
-						"Storage_Env": "predev"
-					}
+					"referenceName": "AzureBlobStorage2",
+					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "Binary",
@@ -142,7 +138,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage2')]"
 			]
 		},
 		{
@@ -180,6 +176,19 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault1')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlobStorage2_connectionString')]"
+				}
+			},
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureKeyVault1')]",
