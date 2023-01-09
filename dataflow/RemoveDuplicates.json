@@ -19,7 +19,11 @@
 					"name": "source2"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "aggregate1"
@@ -56,7 +60,11 @@
 				"union1 aggregate(groupBy(empid),",
 				"     each(match(name != 'empid'), $$ = first($$))) ~> aggregate1",
 				"source1, source2 union(byName: true)~> union1",
-				"aggregate1 sort(asc(empid, true)) ~> sort1"
+				"aggregate1 sort(asc(empid, true)) ~> sort1",
+				"sort1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
