@@ -4,11 +4,11 @@
 		"parameters": {
 			"StorageAccount": {
 				"type": "string",
-				"defaultValue": "adfdemostoragedeen"
+				"defaultValue": "${StorageAccount}$"
 			},
 			"Storage_Env": {
 				"type": "string",
-				"defaultValue": "predev"
+				"defaultValue": "${env}$"
 			}
 		},
 		"annotations": [],

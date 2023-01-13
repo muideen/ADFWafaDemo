@@ -4,7 +4,7 @@
 		"parameters": {
 			"Environment": {
 				"type": "String",
-				"defaultValue": "predev"
+				"defaultValue": "${env}$"
 			}
 		},
 		"annotations": [],
