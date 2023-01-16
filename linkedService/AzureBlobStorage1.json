@@ -4,11 +4,11 @@
 		"parameters": {
 			"StorageAccount": {
 				"type": "string",
-				"defaultValue": "${StorageAccount}$"
+				"defaultValue": "#{StorageAccount}#"
 			},
 			"Storage_Env": {
 				"type": "string",
-				"defaultValue": "${env}$"
+				"defaultValue": "#{env}#"
 			}
 		},
 		"annotations": [],
