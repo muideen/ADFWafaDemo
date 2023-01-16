@@ -21,7 +21,7 @@
 					"referenceName": "AzureKeyVault1",
 					"type": "LinkedServiceReference",
 					"parameters": {
-						"Environment": "predev"
+						"Environment": "#{env}#"
 					}
 				},
 				"secretName": "BlobStoragedeenAccessKey"
